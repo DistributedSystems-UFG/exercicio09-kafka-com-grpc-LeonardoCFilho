@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package sensor;
+
+service SensorService {
+    rpc GetLatestReading (Empty) returns (ReadingResponse);
+    rpc GetHistory (Empty) returns (HistoryResponse);
+}
+
+message Empty {}
+
+message ReadingResponse {
+    double value = 1;
+    string timestamp = 2;
+}
+
+message HistoryResponse {
+    repeated ReadingResponse readings = 1;
+}
